@@ -1,4 +1,5 @@
+import { Jogador } from 'src/models/jogador';
+
 export interface ITerminoPartida {
-  vitoriaPorSobrevivencia(): void;
-  vitoriaPorMaximoRodadas(): void;
+  vitoria(turno: Jogador[]): any;
 }

@@ -7,6 +7,7 @@ export class Jogador {
   comportamento: IComportamentoDeCompra;
   propriedades: Propriedade[];
   posicaoNoTabuleiro: number;
+  eliminado: boolean;
 
   constructor(
     ordem: number,
@@ -18,5 +19,6 @@ export class Jogador {
     this.comportamento = comportamento;
     this.propriedades = [];
     this.posicaoNoTabuleiro = 0;
+    this.eliminado = false;
   }
 }

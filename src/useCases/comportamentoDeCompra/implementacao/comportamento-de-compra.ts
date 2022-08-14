@@ -1,11 +1,18 @@
 import { Jogador } from 'src/models/jogador';
+import { Propriedade } from 'src/models/propriedade';
 
 export class ComportamentoDeCompra {
-  jogador: Jogador;
   tipoDeComportamento: string;
 
-  constructor(jogador: Jogador, tipoDeComportamento: string) {
-    this.jogador = jogador;
+  constructor(tipoDeComportamento: string) {
     this.tipoDeComportamento = tipoDeComportamento;
+  }
+
+  getTipoDeComportamento(): string {
+    return this.tipoDeComportamento;
+  }
+
+  decisaoDeCompra(jogador: Jogador, propriedade: Propriedade): boolean {
+    return jogador.comportamento.logicaDeDecisao(jogador, propriedade);
   }
 }

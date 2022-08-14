@@ -1,0 +1,144 @@
+{
+  "propriedades": [
+    {
+      "ordemNoTabuleiro": 1,
+      "nome": "Praça da Sé",
+      "custoDeVenda": 90,
+      "valorDeAluguel": 30,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 2,
+      "nome": "Rua 25 de Março",
+      "custoDeVenda": 100,
+      "valorDeAluguel": 34,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 3,
+      "nome": "Avenida São João",
+      "custoDeVenda": 100,
+      "valorDeAluguel": 34,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 4,
+      "nome": "Avenida Paulista",
+      "custoDeVenda": 120,
+      "valorDeAluguel": 36,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 5,
+      "nome": "Avenida Vieira Souto",
+      "custoDeVenda": 140,
+      "valorDeAluguel": 38,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 6,
+      "nome": "Niterói",
+      "custoDeVenda": 140,
+      "valorDeAluguel": 38,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 7,
+      "nome": "Avenida Atlântica",
+      "custoDeVenda": 160,
+      "valorDeAluguel": 40,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 8,
+      "nome": "Avenida Presidente Juscelino Kubitschek",
+      "custoDeVenda": 180,
+      "valorDeAluguel": 42,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 9,
+      "nome": "Avenida Engenheiro Luís Carlos Berrini",
+      "custoDeVenda": 180,
+      "valorDeAluguel": 42,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 10,
+      "nome": "Avenida Brigadeiro Faria Lima",
+      "custoDeVenda": 200,
+      "valorDeAluguel": 44,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 11,
+      "nome": "Ipanema",
+      "custoDeVenda": 220,
+      "valorDeAluguel": 46,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 12,
+      "nome": "Leblon",
+      "custoDeVenda": 220,
+      "valorDeAluguel": 46,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 13,
+      "nome": "Copacabana",
+      "custoDeVenda": 240,
+      "valorDeAluguel": 48,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 14,
+      "nome": "Pacaembu",
+      "custoDeVenda": 260,
+      "valorDeAluguel": 50,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 15,
+      "nome": "Ibirapuera",
+      "custoDeVenda": 280,
+      "valorDeAluguel": 52,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 16,
+      "nome": "Barra da Tijuca",
+      "custoDeVenda": 300,
+      "valorDeAluguel": 54,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 17,
+      "nome": "Jardim Botânico",
+      "custoDeVenda": 300,
+      "valorDeAluguel": 54,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 18,
+      "nome": "Lagoa Rodrigo de Freitas",
+      "custoDeVenda": 320,
+      "valorDeAluguel": 56,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 19,
+      "nome": "Avenida Morumbi",
+      "custoDeVenda": 350,
+      "valorDeAluguel": 61,
+      "proprietario": null
+    },
+    {
+      "ordemNoTabuleiro": 20,
+      "nome": "Rua Oscar Freire",
+      "custoDeVenda": 400,
+      "valorDeAluguel": 78,
+      "proprietario": null
+    }
+  ]
+}

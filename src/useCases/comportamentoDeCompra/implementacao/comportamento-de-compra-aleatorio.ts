@@ -1,27 +1,29 @@
+import { Injectable } from '@nestjs/common';
 import { Jogador } from 'src/models/jogador';
 import { Propriedade } from 'src/models/propriedade';
 import { IComportamentoDeCompra } from '../comportamento-de-compra.interface';
 import { ComportamentoDeCompra } from './comportamento-de-compra';
 
+@Injectable()
 export class ComportamentoDeCompraAleatorio
   extends ComportamentoDeCompra
   implements IComportamentoDeCompra
 {
-  constructor(jogador: Jogador) {
-    super(jogador, 'Aleatório');
+  constructor() {
+    super('Aleatório');
   }
 
-  getTipoDeComportamento(): string {
-    return this.tipoDeComportamento;
+  getComportamento(): IComportamentoDeCompra {
+    return this;
   }
 
   private getRandomDecision() {
-    return Math.random() * (3 - 1) + 1;
+    return Math.floor(Math.random() * (3 - 1)) + 1;
   }
 
-  decideComprar(propriedade: Propriedade): boolean {
+  logicaDeDecisao(jogador: Jogador, propriedade: Propriedade): boolean {
     return (
-      this.jogador.saldo - propriedade.custoDeVenda > 0 &&
+      jogador.saldo - propriedade.custoDeVenda > 0 &&
       this.getRandomDecision() == 2
     );
   }

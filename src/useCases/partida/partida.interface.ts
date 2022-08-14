@@ -1,3 +1,3 @@
 export interface IPartida {
-  simular(): void;
+  simular(): any;
 }
