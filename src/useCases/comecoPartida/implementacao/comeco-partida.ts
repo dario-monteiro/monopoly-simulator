@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { Constantes } from 'src/config/constantes';
 import { Utils } from 'src/config/utils';
 import { Jogador } from 'src/models/jogador';
@@ -9,6 +9,8 @@ import { IComecoPartida } from '../comeco-partida.interface';
 
 @Injectable()
 export class ComecoPartida implements IComecoPartida {
+  private readonly logger = new Logger(ComecoPartida.name);
+
   constructor(
     @Inject('ISorteioDado')
     private readonly sorteioDadoUseCase: ISorteioDado,
@@ -68,7 +70,7 @@ export class ComecoPartida implements IComecoPartida {
       return this.condicaoOrdenacao(jogador1, jogador2);
     });
 
-    console.log(`Definida ordem dos Jogadores:`);
+    this.logger.log(`\nDefinida ordem dos Jogadores:`);
 
     return this.redefinirOrderDeTurno(turno);
   }
@@ -99,7 +101,9 @@ export class ComecoPartida implements IComecoPartida {
     let indice = 0;
     return turno.map((jogador) => {
       jogador.ordemDeTurno = indice;
-      console.log(`Jogador ${jogador.comportamento.getTipoDeComportamento()}`);
+      this.logger.log(
+        `Jogador ${jogador.comportamento.getTipoDeComportamento()}`,
+      );
       indice++;
       return jogador;
     });

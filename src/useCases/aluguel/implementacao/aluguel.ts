@@ -1,10 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { Jogador } from 'src/models/jogador';
 import { Propriedade } from 'src/models/propriedade';
 import { IAluguel } from '../aluguel.interface';
 
 @Injectable()
 export class Aluguel implements IAluguel {
+  private readonly logger = new Logger(Aluguel.name);
+
   pagarAluguel(
     jogador: Jogador,
     propriedade: Propriedade,
@@ -12,7 +14,7 @@ export class Aluguel implements IAluguel {
     jogador.saldo -= propriedade.valorDeAluguel;
     propriedade.proprietario.saldo += propriedade.valorDeAluguel;
 
-    console.log(
+    this.logger.log(
       `O Jogador ${jogador.comportamento.getTipoDeComportamento()} pagou aluguel de ${
         propriedade.valorDeAluguel
       } da propriedade ${

@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { Constantes } from 'src/config/constantes';
 import { Jogador } from 'src/models/jogador';
 import { Propriedade } from 'src/models/propriedade';
@@ -10,6 +10,8 @@ import { IJogada } from '../jogada.interface';
 
 @Injectable()
 export class Jogada implements IJogada {
+  private readonly logger = new Logger(Jogada.name);
+
   constructor(
     @Inject('ICompra')
     private readonly compraUseCase: ICompra,
@@ -24,7 +26,7 @@ export class Jogada implements IJogada {
   jogar(jogador: Jogador, propriedades: Propriedade[]): [Jogador, Propriedade] {
     const valorDado = this.sorteioDadoUseCase.lancar();
 
-    console.log(
+    this.logger.log(
       `O Jogador ${jogador.comportamento.getTipoDeComportamento()} tirou ${valorDado} no dado`,
     );
 
@@ -34,15 +36,15 @@ export class Jogada implements IJogada {
       jogador.posicaoNoTabuleiro =
         jogador.posicaoNoTabuleiro - Constantes.MAX_POSICOES;
       jogador.saldo += Constantes.SALDO_GANHO_RODADA;
-      console.log(
-        `O jogador ${jogador.comportamento.getTipoDeComportamento()} completou uma volta e ganhou ${
+      this.logger.log(
+        `\nO jogador ${jogador.comportamento.getTipoDeComportamento()} completou uma volta e ganhou ${
           Constantes.SALDO_GANHO_RODADA
-        }`,
+        }\n`,
       );
     }
     let propriedade = propriedades[jogador.posicaoNoTabuleiro];
 
-    console.log(
+    this.logger.log(
       `O Jogador ${jogador.comportamento.getTipoDeComportamento()} caiu na propriedade ${
         propriedade.nome
       }, que custa ${propriedade.custoDeVenda} para compra e ${
@@ -67,7 +69,7 @@ export class Jogada implements IJogada {
         propriedade,
       );
     }
-    console.log(
+    this.logger.log(
       `Saldo do Jogador ${jogador.comportamento.getTipoDeComportamento()}: ${
         jogador.saldo
       }`,

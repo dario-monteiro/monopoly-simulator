@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Inject, Injectable, Logger } from '@nestjs/common';
 import { Constantes } from 'src/config/constantes';
 import { Jogador } from 'src/models/jogador';
 import { Propriedade } from 'src/models/propriedade';
@@ -9,6 +9,8 @@ import { IPartida } from '../partida.interface';
 
 @Injectable()
 export class Partida implements IPartida {
+  private readonly logger = new Logger(Partida.name);
+
   contadorRodadas: number;
   terminoPartida: boolean;
   propriedades: Propriedade[];
@@ -24,7 +26,7 @@ export class Partida implements IPartida {
   ) {}
 
   async simular(): Promise<any> {
-    console.log('INICIO DA PARTIDA');
+    this.logger.log('\nINICIO DA PARTIDA');
 
     this.contadorRodadas = 0;
     this.propriedades = await this.comecoUseCase.gerarTabuleiro();
@@ -41,8 +43,8 @@ export class Partida implements IPartida {
         );
 
       if (this.contadorRodadas === Constantes.MAX_RODADAS) {
-        console.log(
-          `A partida foi encerrada ao atingir o número máximo de ${Constantes.MAX_RODADAS} rodadas.`,
+        this.logger.log(
+          `\nA partida foi encerrada ao atingir o número máximo de ${Constantes.MAX_RODADAS} rodadas.\n`,
         );
       }
 

@@ -1,18 +1,20 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { Jogador } from 'src/models/jogador';
 import { ITerminoPartida } from '../termino-partida.interface';
 
 @Injectable()
 export class TerminoPartida implements ITerminoPartida {
+  private readonly logger = new Logger(TerminoPartida.name);
+
   vitoria(turno: Jogador[]): any {
     turno = turno.sort((jogador1: Jogador, jogador2: Jogador) => {
       return this.condicaoOrdenacao(jogador1, jogador2);
     });
-    console.log(
+    this.logger.log(
       `O jogador ${turno[0].comportamento.getTipoDeComportamento()} venceu a partida!`,
     );
 
-    console.log('FIM DA PARTIDA');
+    this.logger.log('\nFIM DA PARTIDA\n');
 
     return this.formataResposta(turno);
   }

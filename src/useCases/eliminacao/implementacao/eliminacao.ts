@@ -1,10 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { Jogador } from 'src/models/jogador';
 import { Propriedade } from 'src/models/propriedade';
 import { IEliminacao } from '../eliminacao.interface';
 
 @Injectable()
 export class Eliminacao implements IEliminacao {
+  private readonly logger = new Logger(Eliminacao.name);
+
   eliminar(jogador: Jogador): [Jogador, Propriedade[]] {
     const propriedadesLiberadas: Propriedade[] = [];
     jogador.propriedades.forEach((propriedade) => {
@@ -15,8 +17,8 @@ export class Eliminacao implements IEliminacao {
     jogador.propriedades = undefined;
     jogador.eliminado = true;
 
-    console.log(
-      `O Jogador ${jogador.comportamento.getTipoDeComportamento()} foi eliminado do jogo!`,
+    this.logger.log(
+      `\nO Jogador ${jogador.comportamento.getTipoDeComportamento()} foi eliminado do jogo!\n`,
     );
     return [jogador, propriedadesLiberadas];
   }
