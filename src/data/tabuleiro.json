@@ -1,6 +1,13 @@
 {
   "propriedades": [
     {
+      "ordemNoTabuleiro": 0,
+      "nome": "INICIO",
+      "custoDeVenda": 0,
+      "valorDeAluguel": 0,
+      "proprietario": null
+    },
+    {
       "ordemNoTabuleiro": 1,
       "nome": "Praça da Sé",
       "custoDeVenda": 90,

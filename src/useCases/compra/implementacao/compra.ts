@@ -13,7 +13,7 @@ export class Compra implements ICompra {
     console.log(
       `O Jogador ${jogador.comportamento.getTipoDeComportamento()} comprou a propriedade ${
         propriedade.nome
-      }!`,
+      }, pelo custo de ${propriedade.custoDeVenda}!`,
     );
     return [jogador, propriedade];
   }

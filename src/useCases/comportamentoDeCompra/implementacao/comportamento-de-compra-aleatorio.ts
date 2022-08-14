@@ -23,6 +23,7 @@ export class ComportamentoDeCompraAleatorio
 
   logicaDeDecisao(jogador: Jogador, propriedade: Propriedade): boolean {
     return (
+      jogador.posicaoNoTabuleiro > 0 &&
       jogador.saldo - propriedade.custoDeVenda > 0 &&
       this.getRandomDecision() == 2
     );

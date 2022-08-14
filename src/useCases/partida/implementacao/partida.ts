@@ -24,6 +24,8 @@ export class Partida implements IPartida {
   ) {}
 
   async simular(): Promise<any> {
+    console.log('INICIO DA PARTIDA');
+
     this.contadorRodadas = 0;
     this.propriedades = await this.comecoUseCase.gerarTabuleiro();
     this.turno = this.comecoUseCase.definirTurno();
@@ -37,6 +39,13 @@ export class Partida implements IPartida {
           this.turno,
           this.propriedades,
         );
+
+      if (this.contadorRodadas === Constantes.MAX_RODADAS) {
+        console.log(
+          `A partida foi encerrada ao atingir o número máximo de ${Constantes.MAX_RODADAS} rodadas.`,
+        );
+      }
+
       if (this.terminoPartida) {
         this.contadorRodadas = Constantes.MAX_RODADAS;
       }

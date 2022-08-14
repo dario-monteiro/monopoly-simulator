@@ -23,28 +23,39 @@ export class Rodada implements IRodada {
     propriedades: Propriedade[],
   ): [boolean, Jogador[], Propriedade[]] {
     turno.forEach((jogador) => {
-      if (jogador.eliminado) return;
-
-      let propriedade: Propriedade = undefined;
-      [jogador, propriedade] = this.jogadaUseCase.jogar(jogador, propriedades);
-
-      if (jogador.saldo < 0) {
-        let propriedadesLiberadas: Propriedade[] = [];
-        [jogador, propriedadesLiberadas] =
-          this.eliminacaoUseCase.eliminar(jogador);
-
-        turno[jogador.ordemDeTurno] = jogador;
-        turno[propriedade.proprietario.ordemDeTurno] = propriedade.proprietario;
-
-        propriedadesLiberadas.forEach((propriedadeLiberada) => {
-          propriedades[propriedadeLiberada.ordemNoTabuleiro - 1] =
-            propriedadeLiberada;
-        });
-        if (turno.filter((jogador) => !jogador.eliminado).length === 1) {
-          terminoPartida = true;
-        }
+      if (terminoPartida) {
+        return;
       }
-      propriedades[propriedade.ordemNoTabuleiro - 1] = propriedade;
+      if (!jogador.eliminado) {
+        let propriedade: Propriedade = undefined;
+        [jogador, propriedade] = this.jogadaUseCase.jogar(
+          jogador,
+          propriedades,
+        );
+
+        if (jogador.saldo <= 0) {
+          let propriedadesLiberadas: Propriedade[] = [];
+          [jogador, propriedadesLiberadas] =
+            this.eliminacaoUseCase.eliminar(jogador);
+
+          turno[jogador.ordemDeTurno] = jogador;
+          turno[propriedade.proprietario.ordemDeTurno] =
+            propriedade.proprietario;
+
+          propriedadesLiberadas.forEach((propriedadeLiberada) => {
+            propriedades[propriedadeLiberada.ordemNoTabuleiro] =
+              propriedadeLiberada;
+          });
+          const participantesRestantes = turno.filter(
+            (jogador) => !jogador.eliminado,
+          );
+          if (participantesRestantes.length <= 1) {
+            terminoPartida = true;
+            return;
+          }
+        }
+        propriedades[propriedade.ordemNoTabuleiro] = propriedade;
+      }
     });
     return [terminoPartida, turno, propriedades];
   }

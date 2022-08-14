@@ -20,6 +20,7 @@ export class ComportamentoDeCompraExigente
 
   logicaDeDecisao(jogador: Jogador, propriedade: Propriedade): boolean {
     return (
+      jogador.posicaoNoTabuleiro > 0 &&
       jogador.saldo - propriedade.custoDeVenda > 0 &&
       propriedade.valorDeAluguel > Constantes.ALUGUEL_MIN_EXIGIDO
     );

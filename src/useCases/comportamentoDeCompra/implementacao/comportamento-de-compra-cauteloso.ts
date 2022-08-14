@@ -20,6 +20,7 @@ export class ComportamentoDeCompraCauteloso
 
   logicaDeDecisao(jogador: Jogador, propriedade: Propriedade): boolean {
     return (
+      jogador.posicaoNoTabuleiro > 0 &&
       jogador.saldo - propriedade.custoDeVenda >= Constantes.SALDO_MIN_CAUTELA
     );
   }

@@ -8,6 +8,12 @@ export class TerminoPartida implements ITerminoPartida {
     turno = turno.sort((jogador1: Jogador, jogador2: Jogador) => {
       return this.condicaoOrdenacao(jogador1, jogador2);
     });
+    console.log(
+      `O jogador ${turno[0].comportamento.getTipoDeComportamento()} venceu a partida!`,
+    );
+
+    console.log('FIM DA PARTIDA');
+
     return this.formataResposta(turno);
   }
 
@@ -24,12 +30,16 @@ export class TerminoPartida implements ITerminoPartida {
   }
 
   private condicaoOrdenacao(jogador1: Jogador, jogador2: Jogador) {
-    return jogador1.saldo > jogador2.saldo ||
-      jogador1.ordemDeTurno > jogador2.ordemDeTurno
-      ? 1
-      : jogador1.saldo < jogador2.saldo ||
-        jogador1.ordemDeTurno < jogador2.ordemDeTurno
-      ? -1
-      : 0;
+    if (jogador1.saldo > jogador2.saldo) {
+      return -1;
+    } else if (jogador1.saldo < jogador2.saldo) {
+      return 1;
+    } else if (jogador1.saldo === jogador2.saldo) {
+      if (jogador1.ordemDeTurno > jogador2.ordemDeTurno) {
+        return -1;
+      } else {
+        return 1;
+      }
+    }
   }
 }

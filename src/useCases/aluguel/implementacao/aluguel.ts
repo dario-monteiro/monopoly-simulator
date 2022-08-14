@@ -13,9 +13,11 @@ export class Aluguel implements IAluguel {
     propriedade.proprietario.saldo += propriedade.valorDeAluguel;
 
     console.log(
-      `O Jogador ${jogador.comportamento.getTipoDeComportamento()} pagou aluguel da propriedade ${
+      `O Jogador ${jogador.comportamento.getTipoDeComportamento()} pagou aluguel de ${
+        propriedade.valorDeAluguel
+      } da propriedade ${
         propriedade.nome
-      }!`,
+      } ao proprietário ${propriedade.proprietario.comportamento.getTipoDeComportamento()}`,
     );
     return [jogador, propriedade];
   }

@@ -18,6 +18,9 @@ export class ComportamentoDeCompraImpulsivo
   }
 
   logicaDeDecisao(jogador: Jogador, propriedade: Propriedade): boolean {
-    return jogador.saldo - propriedade.custoDeVenda > 0;
+    return (
+      jogador.posicaoNoTabuleiro > 0 &&
+      jogador.saldo - propriedade.custoDeVenda > 0
+    );
   }
 }

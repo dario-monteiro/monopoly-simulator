@@ -68,6 +68,8 @@ export class ComecoPartida implements IComecoPartida {
       return this.condicaoOrdenacao(jogador1, jogador2);
     });
 
+    console.log(`Definida ordem dos Jogadores:`);
+
     return this.redefinirOrderDeTurno(turno);
   }
 
@@ -97,6 +99,7 @@ export class ComecoPartida implements IComecoPartida {
     let indice = 0;
     return turno.map((jogador) => {
       jogador.ordemDeTurno = indice;
+      console.log(`Jogador ${jogador.comportamento.getTipoDeComportamento()}`);
       indice++;
       return jogador;
     });
