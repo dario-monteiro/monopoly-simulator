@@ -23,6 +23,16 @@ export class Jogada implements IJogada {
     private readonly comportamentoUseCase: IComportamentoDeCompra,
   ) {}
 
+  private jogadorNaoEProprietario(
+    jogador: Jogador,
+    propriedade: Propriedade,
+  ): boolean {
+    return (
+      propriedade.proprietario.comportamento.getTipoDeComportamento() !=
+      jogador.comportamento.getTipoDeComportamento()
+    );
+  }
+
   jogar(jogador: Jogador, propriedades: Propriedade[]): [Jogador, Propriedade] {
     const valorDado = this.sorteioDadoUseCase.lancar();
 
@@ -61,8 +71,7 @@ export class Jogada implements IJogada {
       }
     } else if (
       jogador.posicaoNoTabuleiro > 0 &&
-      propriedade.proprietario.comportamento.getTipoDeComportamento() !=
-        jogador.comportamento.getTipoDeComportamento()
+      this.jogadorNaoEProprietario(jogador, propriedade)
     ) {
       [jogador, propriedade] = this.aluguelUseCase.pagarAluguel(
         jogador,
