@@ -3,6 +3,7 @@ Um simulador do jogo Monopoly, com regras simplificadas.
 
 Implementado usado:  
  - Node  
+ - TypeScript  
  - NestJs  
  - SOLID  
  - CleanCode  
