@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { Constantes } from 'src/config/constantes';
-import { Jogador } from 'src/models/jogador';
-import { Propriedade } from 'src/models/propriedade';
+import { Constantes } from '../../../config/constantes';
+import { Jogador } from '../../../models/jogador';
+import { Propriedade } from '../../../models/propriedade';
 import { IComportamentoDeCompra } from '../comportamento-de-compra.interface';
 import { ComportamentoDeCompra } from './comportamento-de-compra';
 
